@@ -1,0 +1,14 @@
+# Critical - Add these immediately
+*.tfstate
+*.tfstate.*
+terraform.tfstate.backup
+.terraform.lock.hcl
+firstkey*
+*.pub
+web_instance_ip.txt
+.terraform/
+*.log
+
+# Sensitive data
+terraform.tfvars
+*.auto.tfvars
