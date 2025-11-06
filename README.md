@@ -1,60 +1,109 @@
-# Terraform AWS Infrastructure Project
+# 🛠️ Terraform AWS Infrastructure Project
 
-This repository demonstrates how to provision AWS infrastructure using Terraform. The project automates the setup of cloud resources, making it easy to deploy, manage, and scale infrastructure in a reproducible and reliable way.
+*Provision, configure, and manage AWS infrastructure reliably using Terraform.*
 
-## 🎯 Aim of the Project
+---
 
-The aim of this project was to learn and implement **Infrastructure as Code (IaC)** using Terraform to:  
+## 🎯 Project Aim
 
-- Provision an EC2 instance on AWS.  
-- Configure security groups for controlled access.  
-- Manage SSH key pairs for secure login.  
-- Store Terraform state safely using S3.  
-- Automate web server setup on the EC2 instance.
+This project demonstrates **Infrastructure as Code (IaC)** using Terraform on AWS. It automates AWS infrastructure deployment to make it **reproducible, scalable, and secure**.
 
-By following these steps, the project showcases how to fully automate infrastructure deployment with minimal manual intervention.
+Goals:
 
-## 🛠️ How It Was Achieved
+- 🖥️ Provision an **EC2 instance**
+- 🔐 Configure **security groups** for controlled access
+- 🗝️ Manage **SSH key pairs** for secure login
+- ☁️ Store **Terraform state** in S3
+- ⚙️ Automate **web server setup**
 
-The project uses Terraform to define infrastructure as code. Key steps include:
+By following these steps, the project showcases **fully automated infrastructure deployment with minimal manual intervention**.
 
-### Step 1: Create EC2 Instance
-- Defined an EC2 instance in `main.tf`.
-- Configured instance type, AMI, key pair, and tags.
-- Allowed SSH and HTTP access via security groups.
-
-### Step 2: Configure Security Groups
-- Defined security groups in `SG.tf`.
-- Opened ports 22 (SSH) and 80 (HTTP) for the EC2 instance.
-- Ensured only necessary traffic can reach the instance.
-
-### Step 3: Setup SSH Key Pair
-- Managed key pairs in `keypair.tf`.
-- Enabled secure SSH access to the EC2 instance.
-
-### Step 4: Configure S3 Backend
-- Used `backend.tf` to store Terraform state in S3.
-- Ensured state is secure, versioned, and sharable among team members.
-
-### Step 5: Automate Web Server Setup
-- Created `web.sh` to automatically install and configure a web server on the EC2 instance.
-- Executed the script via Terraform provisioners.
-
-### Step 6: Apply Terraform
-- Initialized Terraform using `terraform init`.
-- Validate Terraform using `terraform validate`.
-- Checked resources with `terraform plan`.
-- Deployed infrastructure using `terraform apply`.
-- Optional cleanup via `terraform destroy`.
+---
 
 ## 📁 Project Structure
 
-- `main.tf` – Main resource definitions.  
-- `provider.tf` – AWS provider configuration.  
-- `backend.tf` – Terraform state backend configuration.  
-- `keypair.tf` – SSH key pair setup.  
-- `SG.tf` – Security group definitions.  
-- `InstID.tf` – Instance-specific settings.  
-- `var.tf` – Variables and default values.  
-- `web.sh` – Script to configure web server.  
-- `.gitignore` – Files to ignore in Git.
+```
+main.tf      – Main resource definitions
+provider.tf  – AWS provider configuration
+backend.tf   – Terraform state backend
+keypair.tf   – SSH key pair setup
+SG.tf        – Security group definitions
+InstID.tf    – Instance-specific settings
+var.tf       – Variables and defaults
+web.sh       – Script to configure web server
+.gitignore   – Files to ignore in Git
+```
+
+---
+
+## ⚙️ Prerequisites
+
+Before using this project, ensure you have the following:
+
+- **Terraform** installed (v1.5+ recommended)
+  ```bash
+  terraform -v
+  ```
+- **AWS Account** with IAM permissions for EC2, S3, and security groups
+- **AWS CLI** configured with credentials:
+  ```bash
+  aws configure
+  ```
+- Basic knowledge of **EC2, security groups, SSH, and AWS S3**
+- Optional: **Bash shell** to run `web.sh` for automated web server setup
+
+---
+
+## 🛠️ Implementation Steps
+
+### 1️⃣ Create EC2 Instance
+
+- Defined EC2 in `main.tf`
+- Configured instance type, AMI, key pair, and tags
+- Allowed **SSH (22)** and **HTTP (80)** access via security groups
+
+### 2️⃣ Configure Security Groups
+
+- Defined security groups in `SG.tf`
+- Opened only necessary ports (22 & 80) for secure access
+
+### 3️⃣ Setup SSH Key Pair
+
+- Managed key pairs in `keypair.tf`
+- Enabled secure SSH login to EC2
+
+### 4️⃣ Configure S3 Backend
+
+- Configured `backend.tf` to store Terraform state in **S3**
+- Enabled versioning and shared state management for teams
+
+### 5️⃣ Automate Web Server Setup
+
+- Script `web.sh` installs and configures a web server
+- Executed via Terraform **provisioners**
+
+### 6️⃣ Apply Terraform
+
+```bash
+terraform init      # Initialize Terraform
+terraform validate  # Validate configuration
+terraform plan      # Preview changes
+terraform apply     # Deploy infrastructure
+terraform destroy   # Optional cleanup
+```
+
+---
+
+## 🧩 Key Learnings
+
+- Writing **modular Terraform code** for AWS resources
+- Managing **state in S3** for team collaboration
+- Using **provisioners** to automate server setup
+- Understanding **security best practices** (SSH keys, SG rules)
+
+---
+
+## 👨‍💻 Author
+
+**Shatrujit**\
+*Cloud Infrastructure Automation & IaC Projects*
